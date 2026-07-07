@@ -86,7 +86,7 @@ const E = [128,103,83,101,244,78,226,93,92,147,65,223,104,99,216,221,4,73,100,25
 const Q = [
 "Zadej obnovovaci hodnotu 1 (ASCII):",
 "Zadej obnovovaci hodnotu 2 (Binární číslo):",
-"Zadej obnovovaci hodnotu 3 (XOR KEY: 08 0F 49 24 7D 41 5A poté převeď do ASCII):",
+"Zadej obnovovaci hodnotu 3 (XOR PATCH-KEY: 08 0F 49 24 7D 41 5A převeď na ASCII):",
 "Zadej obnovovaci hodnotu 4 (MD5):",
 "Zadej obnovovaci hodnotu 5 (checksum):"
 ];
@@ -236,17 +236,17 @@ async function task(name,duration,status="OK"){
 
 async function recoverySequence(){
     append("");
-    await task("Building recovery key",1500);
+    await task("Building recovery key",4500);
     await task("Decrypting coordinate database",2000);
     await task("Checking segment table",800);
     await task("Verifying recovery key length",600);
     await task("Comparing memory mirror",900);
     await task("Calculating coordinate checksum",1200);
     await task("Validating encrypted payload",1000);
-    await task("Repairing damaged sectors",1500);
+    await task("Repairing damaged sectors",3500);
     await task("Restoring final database index",1000);
     await task("Synchronizing cache pointer",800);
-    await task("Unlocking coordinate record",1300);
+    await task("Unlocking coordinate record",2300);
     await task("Final checksum validation",9200,"PASSED");
 }
 
