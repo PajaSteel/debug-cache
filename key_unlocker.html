@@ -199,7 +199,7 @@ h1{
 
   <div class="main">
     <div class="panel input-panel">
-      <div id="prompt" class="prompt">Zadej hodnotu z bloku číslo: 2</div>
+      <div id="prompt" class="prompt">Zadejte hodnotu z bloku číslo 2:</div>
       <div id="display" class="inputline cursor"></div>
 
       <div class="keypad">
@@ -229,6 +229,8 @@ h1{
 </div>
 
 <script>
+const KEYLOCKER_CONFIG = {titleText:"KEY LOCKER",prompts:[],hashes:[],finalCode:"",okText:"",badText:"",resultText:""};
+
 function _k9(a){
   const z = ((0x51 << 1) ^ 0x2f) & 255;
   return a.map((v,i) => String.fromCharCode(v ^ ((z + i * 31) & 255))).join("");
@@ -240,7 +242,7 @@ const blocks = [
   { number: 5, value: _k9([188,152,242]) }
 ];
 
-const finalCode = _k9([181,154,249]);
+const finalCode = _k9([186,153,242]);
 
 let step = 0;
 let current = "";
@@ -273,8 +275,7 @@ function updateDisplay(){
 
 function updatePrompt(){
   if(step < blocks.length){
-    document.getElementById("prompt").textContent =
-      "Zadej hodnotu z bloku číslo: " + blocks[step].number;
+    document.getElementById("prompt").textContent = __kp(step);
   }
 }
 
@@ -362,6 +363,9 @@ async function runUnlock(){
 
 updatePrompt();
 updateDisplay();
+
+const __KP=[[215,205,175,143,99,92,34,70,237,203,167,140,110,84,74,126,7,188,217,182,150,115,66,118,376,121,192,190,158,48,29,116],[215,205,175,143,99,92,34,70,237,203,167,140,110,84,74,126,7,188,217,182,150,115,66,118,376,121,192,190,158,48,27,116],[215,205,175,143,99,92,34,70,237,203,167,140,110,84,74,126,7,188,217,182,150,115,66,118,376,121,192,190,158,48,26,116]];
+function __kp(i){return _k9(__KP[i]);}
 </script>
 </body>
 </html>
